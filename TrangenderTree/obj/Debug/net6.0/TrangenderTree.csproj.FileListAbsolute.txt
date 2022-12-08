@@ -1,0 +1,15 @@
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\TrangenderTree.exe
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\TrangenderTree.deps.json
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\TrangenderTree.runtimeconfig.json
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\TrangenderTree.dll
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\ref\TrangenderTree.dll
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\bin\Debug\net6.0\TrangenderTree.pdb
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.csproj.AssemblyReference.cache
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.AssemblyInfoInputs.cache
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.AssemblyInfo.cs
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.csproj.CoreCompileInputs.cache
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.dll
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\ref\TrangenderTree.dll
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.pdb
+D:\Projects\RiderProjects\TrangenderTree\TrangenderTree\obj\Debug\net6.0\TrangenderTree.genruntimeconfig.cache
