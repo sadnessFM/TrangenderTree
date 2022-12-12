@@ -1,9 +1,8 @@
-﻿#pragma warning disable CS8618
-namespace TrangenderTree;
+﻿namespace TrangenderTree;
 
 public class Node
 {
-    public Node LeftNode { get; set; }
-    public Node RightNode { get; set; }
+    public Node LeftNode { get; set; } = null!;
+    public Node RightNode { get; set; } = null!;
     public int Data { get; set; }
 }

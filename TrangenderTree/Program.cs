@@ -2,11 +2,12 @@
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
         #region Initialization
 
         TransTree binaryTree = new();
+        
         //Постройте BST с узлами: 17, 6, 5, 20, 19, 18, 11, 14, 12, 13, 2, 4, 10
         binaryTree.Add(17);
         binaryTree.Add(6);
@@ -28,7 +29,7 @@ internal class Program
         Console.WriteLine();
         
         Console.WriteLine("sorted:");
-        binaryTree.TraverseInOrder(binaryTree.Root);
+        binaryTree.InOrder(binaryTree.Root);
         Console.WriteLine();
     }
 }

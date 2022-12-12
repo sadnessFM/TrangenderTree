@@ -1,16 +1,14 @@
 ﻿// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 
-using System.Text;
-
 namespace TrangenderTree;
 
 public class TransTree
 {
-    internal Node Root { get; private set; }
+    internal Node Root { get; private set; } = null!;
 
     public void Add(int value)
     {
-        Node before = null;
+        Node before = null!;
         Node after = Root;
 
         while (after != null)
@@ -39,7 +37,7 @@ public class TransTree
         }
     }
 
-    public Node Find(int value) => Find(value, Root);
+    public Node Find(int value) => Find(Root, value);
 
     public void Remove(int value) => Root = Remove(Root, value);
 
@@ -79,31 +77,34 @@ public class TransTree
         return minv;
     }
 
-    private Node Find(int value, Node parent) =>
+    private Node Find(Node parent, int value) =>
         (parent == null
             ? null
             : value == parent.Data
                 ? parent
-                : Find(value, value < parent.Data
+                : Find(value < parent.Data
                     ? parent.LeftNode
-                    : parent.RightNode)) 
+                    : parent.RightNode, 
+                    value)) 
         ?? throw new InvalidOperationException();
 
-    public int GetTreeDepth() => GetTreeDepth(Root);
+    private int GetTreeDepth() => GetTreeDepth(Root);
 
     private int GetTreeDepth(Node parent) => parent == null 
         ? 0 
         : Math.Max(GetTreeDepth(parent.LeftNode), GetTreeDepth(parent.RightNode)) + 1;
-    
-    public void TraverseInOrder(Node parent)
+
+    public void InOrder(Node parent)
     {
-        if (parent == null) return;
-        TraverseInOrder(parent.LeftNode);
-        Console.Write(parent.Data + " ");
-        TraverseInOrder(parent.RightNode);
+        while (true)
+        {
+            if (parent == null) return;
+            InOrder(parent.LeftNode);
+            Console.Write(parent.Data + " ");
+            parent = parent.RightNode;
+        }
     }
-    
-    // prints every binary tree level on a new line
+
     public void PrintTree()
     {
         int depth = GetTreeDepth();
@@ -113,20 +114,25 @@ public class TransTree
             Console.WriteLine();
         }
     }
-    
-    // prints every node on a given level
+
     private void PrintGivenLevel(Node parent, int level)
     {
-        if (parent == null) return;
-        switch (level)
+        while (true)
         {
-            case 1:
-                Console.Write(parent.Data + " ");
-                break;
-            case > 1:
-                PrintGivenLevel(parent.LeftNode, level - 1);
-                PrintGivenLevel(parent.RightNode, level - 1);
-                break;
+            if (parent == null) return;
+            switch (level)
+            {
+                case 1:
+                    Console.Write(parent.Data + " ");
+                    break;
+                case > 1:
+                    PrintGivenLevel(parent.LeftNode, level - 1);
+                    parent = parent.RightNode;
+                    level -= 1;
+                    continue;
+            }
+
+            break;
         }
     }
 }
