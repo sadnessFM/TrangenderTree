@@ -31,5 +31,12 @@ internal class Program
         Console.WriteLine("sorted:");
         binaryTree.InOrder(binaryTree.Root);
         Console.WriteLine();
+
+
+        binaryTree.Remove(17);
+        binaryTree.Remove(6);
+        binaryTree.Find(5);
+        binaryTree.PrintTree();
+        
     }
 }

@@ -11,7 +11,7 @@ public class TransTree
         Node before = null!;
         Node after = Root;
 
-        while (after != null)
+        while (after is not null)
         {
             before = after;
             if (value < after.Data)
@@ -41,7 +41,7 @@ public class TransTree
 
     public void Remove(int value) => Root = Remove(Root, value);
 
-    private Node Remove(Node parent, int key)
+    private static Node Remove(Node parent, int key)
     {
         if (parent == null) return parent ?? throw new ArgumentNullException(nameof(parent));
         if (key < parent.Data)
@@ -64,7 +64,7 @@ public class TransTree
         return parent ?? throw new ArgumentNullException(nameof(parent));
     }
 
-    private int MinValue(Node node)
+    private static int MinValue(Node node)
     {
         int minv = node.Data;
 
@@ -77,7 +77,7 @@ public class TransTree
         return minv;
     }
 
-    private Node Find(Node parent, int value) =>
+    private static Node Find(Node parent, int value) =>
         (parent == null
             ? null
             : value == parent.Data
@@ -90,7 +90,7 @@ public class TransTree
 
     private int GetTreeDepth() => GetTreeDepth(Root);
 
-    private int GetTreeDepth(Node parent) => parent == null 
+    private static int GetTreeDepth(Node parent) => parent == null 
         ? 0 
         : Math.Max(GetTreeDepth(parent.LeftNode), GetTreeDepth(parent.RightNode)) + 1;
 
@@ -115,7 +115,7 @@ public class TransTree
         }
     }
 
-    private void PrintGivenLevel(Node parent, int level)
+    private static void PrintGivenLevel(Node parent, int level)
     {
         while (true)
         {
