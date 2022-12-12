@@ -1,10 +1,12 @@
 ﻿// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 
+using System.Text;
+
 namespace TrangenderTree;
 
 public class TransTree
 {
-    internal Node Root { get; set; }
+    internal Node Root { get; private set; }
 
     public void Add(int value)
     {
@@ -16,10 +18,9 @@ public class TransTree
             before = after;
             if (value < after.Data)
                 after = after.LeftNode;
-            else if (value > after.Data) //Is new node in right tree?
+            else if (value > after.Data) 
                 after = after.RightNode;
             else
-                //Exist same value
                 return;
         }
 
@@ -45,7 +46,6 @@ public class TransTree
     private Node Remove(Node parent, int key)
     {
         if (parent == null) return parent ?? throw new ArgumentNullException(nameof(parent));
-
         if (key < parent.Data)
             parent.LeftNode = Remove(parent.LeftNode, key);
         else if (key > parent.Data)
@@ -63,7 +63,7 @@ public class TransTree
             parent.RightNode = Remove(parent.RightNode, parent.Data);
         }
 
-        return parent;
+        return parent ?? throw new ArgumentNullException(nameof(parent));
     }
 
     private int MinValue(Node node)
@@ -80,12 +80,12 @@ public class TransTree
     }
 
     private Node Find(int value, Node parent) =>
-        (parent == null 
-            ? null 
-            : value == parent.Data 
-                ? parent 
-                : Find(value, value < parent.Data 
-                    ? parent.LeftNode 
+        (parent == null
+            ? null
+            : value == parent.Data
+                ? parent
+                : Find(value, value < parent.Data
+                    ? parent.LeftNode
                     : parent.RightNode)) 
         ?? throw new InvalidOperationException();
 
@@ -94,15 +94,7 @@ public class TransTree
     private int GetTreeDepth(Node parent) => parent == null 
         ? 0 
         : Math.Max(GetTreeDepth(parent.LeftNode), GetTreeDepth(parent.RightNode)) + 1;
-
-    public void TraversePreOrder(Node parent)
-    {
-        if (parent == null) return;
-        Console.Write(parent.Data + " ");
-        TraversePreOrder(parent.LeftNode);
-        TraversePreOrder(parent.RightNode);
-    }
-
+    
     public void TraverseInOrder(Node parent)
     {
         if (parent == null) return;
@@ -110,12 +102,31 @@ public class TransTree
         Console.Write(parent.Data + " ");
         TraverseInOrder(parent.RightNode);
     }
-
-    public void TraversePostOrder(Node parent)
+    
+    // prints every binary tree level on a new line
+    public void PrintTree()
+    {
+        int depth = GetTreeDepth();
+        for (int i = 1; i <= depth; i++)
+        {
+            PrintGivenLevel(Root, i);
+            Console.WriteLine();
+        }
+    }
+    
+    // prints every node on a given level
+    private void PrintGivenLevel(Node parent, int level)
     {
         if (parent == null) return;
-        TraversePostOrder(parent.LeftNode);
-        TraversePostOrder(parent.RightNode);
-        Console.Write(parent.Data + " ");
+        switch (level)
+        {
+            case 1:
+                Console.Write(parent.Data + " ");
+                break;
+            case > 1:
+                PrintGivenLevel(parent.LeftNode, level - 1);
+                PrintGivenLevel(parent.RightNode, level - 1);
+                break;
+        }
     }
 }
